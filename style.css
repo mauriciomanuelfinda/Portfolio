@@ -1,0 +1,402 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+}
+nav, ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+a:hover{
+    opacity: 1 ;
+    color:rgb(229, 100, 94);
+}
+/*Cabeçalho Grande*/
+header{
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    max-height: 100px;
+}
+header .itens {
+    display: flex;
+    max-width: max-content;
+    max-height: 60px;
+}
+header h2 {
+    color: rgb(229, 100, 94);
+    font-size: 25px;
+    max-height: 60px;
+}
+header .itens input{
+    border: 1px solid rgb(229, 100, 94);
+    color: rgb(229, 100, 94);
+    background-color: transparent;
+    padding: 10px;
+
+}
+header .itens nav { 
+    display: flex;
+    align-items: center;
+}
+header li a { 
+    color: white; 
+    font-size: 20px; 
+
+}
+header li {
+     margin: 0 15px;
+}
+header li:first-child{margin-left: 0;}
+header li:last-child{margin-right: 0;}
+
+#Home{
+    background-image: url('Rio_de_Janeiro_visto_do_Parque_da_Cidade-e1481216226389.jpg');
+    background-size: cover; 
+    flex-basis: 60%;
+    height: 500px;
+    display: grid;
+    flex-direction: column; 
+    text-align: center;
+}
+#Me img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+#Me p{
+    color: white;
+    font-size: 15px;
+    opacity: 0.2px;
+    max-width: max-content;
+    margin: auto;
+}
+#Me h2{
+    max-width: max-content;
+    color: rgb(229, 100, 94);;
+    font-size: 30px;
+    margin: auto;
+}
+@media (max-width : 700px){
+     header {
+        flex-direction: column;
+    }
+     header img{ 
+        margin-bottom: 15px;
+    }
+}
+/*About Me*/
+
+#about{
+    background-color: rgb(40, 42, 66);
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+#about div{
+    max-width: max-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+#about .img{
+    height: 500px;
+    align-items: center;
+    justify-content: center;
+} 
+#about .img img{
+    height: 400px;
+    width: 300px;
+    display: block;
+}
+#about .Me{
+    display: grid;
+    margin-left: 30px;
+}
+#about .Me div{
+    display: grid;
+    width: 400px;
+    
+}
+#about .Me div hr{
+    width: 50px;
+    border-color: rgb(229, 100, 94);;
+}
+#about .Me div small{
+    color: rgb(229, 100, 94);;
+}
+#about .Me div p{
+    text-align: justify;
+    color: white;
+    font-size: 15px;
+}
+#about .Me div h2{
+    font-size: 20px;
+    color: white;
+}
+#about .Me div small, #about .Me div h2, #about .Me div p, #about .Me div hr{
+    margin-bottom: 10px;
+}
+
+#about .Me .mais-detalhes{
+    margin-top:20px ;
+    margin-bottom: 40px;
+    display: flex;
+    border: 2px solid rgb(229, 100, 94);;
+    justify-content: center;
+
+
+}
+#about .Me .mais-detalhes section{
+    margin-right:10px;
+}
+#about .Me .mais-detalhes section p{
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: white;
+}
+@media (max-width : 760px){
+    #about{
+        align-items: center;
+    }
+    #about div{
+        display: grid;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #about .Me div small{
+        text-align: center;
+    }
+    #about .Me div h2{
+        text-align: center;
+    }
+    #about .Me div hr{
+        width: 400px;
+    }
+    #about .Me .mais-detalhes{
+        display: grid;
+        flex-direction: column;
+        justify-content: start;
+    }
+    #about .Me .mais-detalhes section{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #about .img {
+        height: 400px;
+    }
+    #about .img img{
+        height: 300px;
+    }
+}
+/* Meus Serviços */
+#Services{
+    background-color: rgb(37, 39, 62);
+    justify-content: center;
+    display: grid;
+    flex-direction: column;
+}
+#Services .what-do p{
+    color: rgb(229, 100, 94);
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+#Services .what-do h2{
+    color: white;
+    font-size: 20px;
+}
+#Services .what-do hr{
+    width: 30px;
+    border: 2px solid rgb(229, 100, 94);
+    margin-bottom: 30px;
+}
+#Services .My-services{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+#Services .My-services section{
+    width: 230px;
+    margin-right: 15px;
+    border: 2px solid rgb(229, 100, 94);
+    margin-bottom: 30px;
+}
+#Services .My-services section h2{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+}
+#Services .My-services section p{
+    margin: 20px 30px 15px 20px;
+    text-align: justify;
+    color: white;
+}
+@media(max-width:780px){
+    #Services .My-services{
+        display: grid;
+        flex-direction: column;
+    }
+    #Services .what-do h2{
+        text-align: center;
+    }
+    #Services .what-do hr{
+        width: 230px;
+    }
+    #Services .what-do p{
+        text-align: center;
+    }
+}
+
+/*Contacts */
+#Contacts{
+    background-color: rgb(31, 34, 51);
+    justify-content: center;
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+}
+#Contacts .titulo{
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+#Contacts .my{
+    display: flex;
+    margin: 20px;
+}
+#Contacts .all{
+    width: 350px;
+    margin:20px;
+}
+#Contacts .all .shy{
+    font-size: 20px;
+    color: rgb(229, 100, 94);
+    margin-bottom: 15px;
+}
+#Contacts .all .p{
+    text-align: justify;
+    color: white;
+    margin-bottom: 15px;
+}
+#Contacts .all .div{
+    margin-bottom: 15px;
+    display: flex;
+}
+#Contacts .all .div div:first-child{
+    font-size: 30px;
+    color: rgb(229, 100, 94);
+}
+#Contacts .all .div div:last-child{
+    display: grid;
+    margin-left: 10px;
+}
+#Contacts .all div p{
+    color: rgb(206, 204, 204);
+}
+#Contacts .all div h2{
+    color: white;
+    font-size: 15px;
+}
+#Contacts .inputs{
+    justify-content: center;
+    display: grid;
+}
+#Contacts .inputs .input-in{
+    display: flex;
+}
+#Contacts .inputs .input-in input:first-child{
+    margin-right: 10px;
+}
+#Contacts .inputs .input-in input:last-child{
+    margin-left: 10px;
+}
+#Contacts .inputs .input-in input{
+    width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-color: rgb(31, 34, 51);
+    display: block;
+    border-color: rgb(31, 34, 51);
+    border-radius: 15px;
+}
+#Contacts .inputs .input-in2 input[type="text"]{
+    width: 620px;
+    background-color: rgb(31, 34, 51);
+    display: block;
+    border-color: rgb(31, 34, 51);
+    border-radius: 15px;
+}
+#Contacts .inputs .input-in2 input[type="text"]:first-child{
+    height: 40px;
+    margin-bottom: 15px;   
+}
+#Contacts .inputs .input-in2 .message{
+    text-align: start right;
+    height: 150px;
+    margin-bottom: 15px;
+}
+#Contacts .inputs .input-in2 input[type="submit"]{
+    color: rgb(229, 100, 94);
+    border: 1px solid rgb(229, 100, 94);
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 10px;
+    width: 620px;
+}
+#Contacts input:focus{
+    border-color: rgb(229, 100, 94);
+}
+@media (max-width:1070px){
+    #Contacts .inputs .input-in input{
+        width: 175px;
+    }
+    #Contacts .inputs .input-in2 input[type="text"], #Contacts .inputs .input-in2 input[type="submit"]{
+        width: 370px;
+    }
+}
+@media(max-width:800px){
+    #Contacts .my{
+        flex-direction: column;
+        display: grid;
+    }
+}
+
+/*Rodapé*/
+footer{
+
+    width: 100%;
+    background-color: rgb(17, 17, 17);
+}
+footer p{
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+footer div ul{
+    align-items: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+footer div ul li{
+    margin-left: 10px;
+    font-size: 25px;
+    color: white;
+}
+footer div ul li a{
+    color: rgb(208, 206, 206);
+}

@@ -34,6 +34,16 @@ export interface Stat {
   label: string
 }
 
+export interface Study {
+  kind: 'degree' | 'school' | 'course'
+  title: string
+  school: string
+  period: string
+  current?: boolean
+  description?: string
+  points?: string[]
+}
+
 export interface Language {
   name: string
   level: string

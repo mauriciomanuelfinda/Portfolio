@@ -78,7 +78,7 @@ export default function Hero() {
               <span className="float-card__live" />
               <div>
                 <strong>Em produção</strong>
-                <small>Sistemas do Governo de Angola &amp; IPIL</small>
+                <small>Sistemas de gestão académica de larga escala</small>
               </div>
             </div>
           </div>

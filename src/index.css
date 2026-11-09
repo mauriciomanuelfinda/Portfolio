@@ -1298,7 +1298,7 @@ button {
 /* ---------- Formação ---------- */
 .edu {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -1308,7 +1308,7 @@ button {
   gap: 10px;
 }
 
-.edu__card > p:last-child {
+.edu__desc {
   color: var(--text-soft);
   margin-top: 6px;
 }
@@ -1339,6 +1339,11 @@ button {
 .edu__icon--alt {
   background: linear-gradient(135deg, #0891b2, #059669);
   box-shadow: 0 10px 30px -10px rgba(8, 145, 178, 0.8);
+}
+
+.edu__icon--warm {
+  background: linear-gradient(135deg, #f59e0b, #db2777);
+  box-shadow: 0 10px 30px -10px rgba(219, 39, 119, 0.7);
 }
 
 .edu__card h3 {

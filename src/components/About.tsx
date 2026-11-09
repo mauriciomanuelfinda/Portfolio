@@ -19,7 +19,7 @@ export default function About() {
           <Reveal className="card bento__now" delay={80}>
             <span className="card__label"><TbBolt /> Agora</span>
             <p>
-              A refactorizar o <strong>Acesso ETP</strong> para ser reutilizado nos próximos anos lectivos.
+              Tech Lead na <strong>SOSOFT</strong> e Director Técnico do <strong>Acesso ETP 2026/27</strong>.
             </p>
           </Reveal>
 

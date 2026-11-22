@@ -1,37 +1,34 @@
-import type { CSSProperties } from 'react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { projects } from '../data'
+import { useI18n } from '../i18n'
 
 export default function Projects() {
+  const { t } = useI18n()
+  const p = t.projects
+
   return (
     <section id="projectos" className="section">
       <div className="container">
-        <SectionHeading kicker="04 — Projectos" title="Plataformas que já estão no ar.">
-          Sistemas institucionais de larga escala, usados por estudantes, professores e escolas em Angola.
+        <SectionHeading index={4} kicker={p.kicker} title={p.title}>
+          {p.intro}
         </SectionHeading>
 
         <div className="projects">
-          {projects.map((p, i) => (
-            <Reveal
-              as="article"
-              key={p.name}
-              className="card project"
-              delay={(i % 2) * 90}
-              style={{ '--a1': p.accent[0], '--a2': p.accent[1] } as CSSProperties}
-            >
-              <div className="project__glow" aria-hidden="true" />
+          {p.list.map((project, i) => (
+            <Reveal as="article" key={project.name} className="card project" delay={(i % 2) * 80}>
               <div className="project__top">
                 <span className="project__index">{String(i + 1).padStart(2, '0')}</span>
                 <div className="project__badges">
-                  <span className={`badge ${p.status === 'Em produção' ? 'badge--live' : ''}`}>{p.status}</span>
-                  <span className="badge">{p.scope}</span>
+                  <span className={`badge ${project.status === 'live' ? 'badge--live' : ''}`}>
+                    {project.status === 'live' ? p.statusLive : p.statusAcademic}
+                  </span>
+                  <span className="badge">{project.scope}</span>
                 </div>
               </div>
-              <h3>{p.name}</h3>
-              <p className="project__tagline">{p.tagline}</p>
+              <h3>{project.name}</h3>
+              <p className="project__tagline">{project.tagline}</p>
               <ul className="ticks">
-                {p.points.map((pt) => (
+                {project.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
               </ul>

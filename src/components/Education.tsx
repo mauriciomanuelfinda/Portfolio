@@ -2,28 +2,30 @@ import { TbSchool, TbCertificate, TbBuildingBank } from 'react-icons/tb'
 import type { IconType } from 'react-icons'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
-import { education } from '../data'
+import { useI18n } from '../i18n'
 import type { Study } from '../types'
 
-const icons: Record<Study['kind'], { icon: IconType; className: string }> = {
-  degree: { icon: TbBuildingBank, className: 'edu__icon' },
-  school: { icon: TbSchool, className: 'edu__icon edu__icon--alt' },
-  course: { icon: TbCertificate, className: 'edu__icon edu__icon--warm' },
+const icons: Record<Study['kind'], IconType> = {
+  degree: TbBuildingBank,
+  school: TbSchool,
+  course: TbCertificate,
 }
 
 export default function Education() {
+  const { t } = useI18n()
+
   return (
     <section id="formacao" className="section">
       <div className="container">
-        <SectionHeading kicker="05 — Formação" title="Base sólida, aprendizagem contínua." />
+        <SectionHeading index={5} kicker={t.education.kicker} title={t.education.title} />
 
         <div className="edu">
-          {education.map((item, i) => {
-            const { icon: Icon, className } = icons[item.kind]
+          {t.education.list.map((item, i) => {
+            const Icon = icons[item.kind]
             return (
-              <Reveal key={item.title} className="card edu__card" delay={i * 90}>
+              <Reveal key={item.kind} className="card edu__card" delay={i * 80}>
                 <div className="edu__head">
-                  <span className={className}>
+                  <span className="edu__icon">
                     <Icon />
                   </span>
                   <span className={`period ${item.current ? 'period--current' : ''}`}>{item.period}</span>

@@ -7,15 +7,16 @@ import Projects from './components/Projects'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import { profile } from './data'
+import { I18nProvider, useI18n } from './i18n'
 
-export default function App() {
+function Page() {
+  const { t } = useI18n()
+
   return (
     <>
       <div className="backdrop" aria-hidden="true">
-        <div className="blob blob--1" />
-        <div className="blob blob--2" />
-        <div className="blob blob--3" />
-        <div className="grid-lines" />
+        <div className="backdrop__glow" />
+        <div className="backdrop__grid" />
       </div>
 
       <Navbar />
@@ -33,8 +34,16 @@ export default function App() {
         <span>
           © {new Date().getFullYear()} {profile.name}
         </span>
-        <span className="muted">Feito com React, TypeScript e Vite · Luanda, Angola</span>
+        <span className="muted">{t.footer.madeWith}</span>
       </footer>
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <I18nProvider>
+      <Page />
+    </I18nProvider>
   )
 }

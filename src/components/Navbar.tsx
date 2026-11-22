@@ -1,19 +1,24 @@
 import { useEffect, useState } from 'react'
 import { TbMenu2, TbX } from 'react-icons/tb'
 import ThemeToggle from './ThemeToggle'
+import LangToggle from './LangToggle'
+import { useI18n } from '../i18n'
 
-const links = [
-  { id: 'sobre', label: 'Sobre' },
-  { id: 'stack', label: 'Stack' },
-  { id: 'experiencia', label: 'Experiência' },
-  { id: 'projectos', label: 'Projectos' },
-  { id: 'formacao', label: 'Formação' },
-]
+const ids = ['sobre', 'stack', 'experiencia', 'projectos', 'formacao'] as const
 
 export default function Navbar() {
+  const { t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+
+  const labels: Record<(typeof ids)[number], string> = {
+    sobre: t.nav.about,
+    stack: t.nav.stack,
+    experiencia: t.nav.experience,
+    projectos: t.nav.projects,
+    formacao: t.nav.education,
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -31,33 +36,52 @@ export default function Navbar() {
     }
   }, [])
 
+  // Fecha o menu móvel com Esc e ao passar para ecrã largo
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    const mq = window.matchMedia('(min-width: 961px)')
+    const onMq = () => mq.matches && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    mq.addEventListener('change', onMq)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      mq.removeEventListener('change', onMq)
+    }
+  }, [open])
+
   const close = () => setOpen(false)
 
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''} ${open ? 'nav--open' : ''}`}>
       <div className="nav__inner container">
-        <a href="#inicio" className="logo" onClick={close}>
+        <a href="#inicio" className="logo" onClick={close} aria-label="Mauricio Finda">
           <span className="logo__mark">MF</span>
           <span className="logo__text">
             mauricio<span>.dev</span>
           </span>
         </a>
-        <nav className="nav__links" aria-label="Principal">
-          {links.map((l) => (
-            <a key={l.id} href={`#${l.id}`} className={active === l.id ? 'is-active' : ''} onClick={close}>
-              {l.label}
+
+        <nav id="menu" className="nav__links" aria-label="Principal">
+          {ids.map((id) => (
+            <a key={id} href={`#${id}`} className={active === id ? 'is-active' : ''} onClick={close}>
+              {labels[id]}
             </a>
           ))}
           <a href="#contacto" className="btn btn--sm btn--primary nav__cta" onClick={close}>
-            Contactar
+            {t.nav.contact}
           </a>
         </nav>
+
         <div className="nav__actions">
+          <LangToggle />
           <ThemeToggle />
           <button
-            className="nav__toggle"
-            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            type="button"
+            className="icon-btn nav__toggle"
+            aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
             aria-expanded={open}
+            aria-controls="menu"
             onClick={() => setOpen((o) => !o)}
           >
             {open ? <TbX /> : <TbMenu2 />}

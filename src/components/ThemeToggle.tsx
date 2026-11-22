@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TbMoonStars, TbSun } from 'react-icons/tb'
+import { useI18n } from '../i18n'
 
 export type Theme = 'dark' | 'light'
 
@@ -12,12 +13,14 @@ function getInitialTheme(): Theme {
 }
 
 export default function ThemeToggle() {
+  const { t } = useI18n()
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
   useEffect(() => {
-    const root = document.documentElement
-    root.dataset.theme = theme
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#f7f7fb' : '#07070c')
+    document.documentElement.dataset.theme = theme
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', theme === 'light' ? '#fafaf9' : '#0b0b0c')
   }, [theme])
 
   // Segue o sistema enquanto o utilizador não escolher manualmente
@@ -46,10 +49,10 @@ export default function ThemeToggle() {
     }
   }
 
-  const label = theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro'
+  const label = theme === 'dark' ? t.nav.themeToLight : t.nav.themeToDark
 
   return (
-    <button type="button" className="theme-toggle" onClick={toggle} aria-label={label} title={label}>
+    <button type="button" className="icon-btn theme-toggle" onClick={toggle} aria-label={label} title={label}>
       <TbSun className="icon-sun" aria-hidden="true" />
       <TbMoonStars className="icon-moon" aria-hidden="true" />
     </button>

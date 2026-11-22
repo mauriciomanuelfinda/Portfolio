@@ -1,37 +1,41 @@
 import { TbMapPin, TbLanguage, TbSparkles, TbBolt } from 'react-icons/tb'
 import Reveal from './Reveal'
+import Rich from './Rich'
 import SectionHeading from './SectionHeading'
-import { profile } from '../data'
+import { useI18n } from '../i18n'
 
 export default function About() {
+  const { t } = useI18n()
+  const a = t.about
+
   return (
     <section id="sobre" className="section">
       <div className="container">
-        <SectionHeading kicker="01 — Sobre mim" title="Código que chega à produção e serve pessoas reais." />
+        <SectionHeading index={1} kicker={a.kicker} title={a.title} />
 
         <div className="bento">
           <Reveal className="card bento__main">
-            {profile.about.map((p) => (
+            {a.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </Reveal>
 
           <Reveal className="card bento__now" delay={80}>
-            <span className="card__label"><TbBolt /> Agora</span>
+            <span className="card__label"><TbBolt /> {a.nowLabel}</span>
             <p>
-              Tech Lead na <strong>SOSOFT</strong> e Director Técnico do <strong>Acesso ETP 2026/27</strong>.
+              <Rich text={a.now} />
             </p>
           </Reveal>
 
           <Reveal className="card bento__loc" delay={120}>
-            <span className="card__label"><TbMapPin /> Base</span>
-            <p className="big">{profile.location}</p>
+            <span className="card__label"><TbMapPin /> {a.baseLabel}</span>
+            <p className="big">{a.location}</p>
             <div className="map-dots" aria-hidden="true" />
           </Reveal>
 
           <Reveal className="card bento__lang" delay={160}>
-            <span className="card__label"><TbLanguage /> Idiomas</span>
-            {profile.languages.map((l) => (
+            <span className="card__label"><TbLanguage /> {a.languagesLabel}</span>
+            {a.languages.map((l) => (
               <div key={l.name} className="lang">
                 <div className="lang__row">
                   <span>{l.name}</span>
@@ -45,9 +49,9 @@ export default function About() {
           </Reveal>
 
           <Reveal className="card bento__soft" delay={200}>
-            <span className="card__label"><TbSparkles /> Como trabalho</span>
+            <span className="card__label"><TbSparkles /> {a.workLabel}</span>
             <ul className="chips">
-              {profile.softSkills.map((s) => (
+              {a.softSkills.map((s) => (
                 <li key={s}>{s}</li>
               ))}
             </ul>

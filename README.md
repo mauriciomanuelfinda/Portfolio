@@ -13,7 +13,12 @@ Abre http://localhost:5173/portfolio/
 
 ## Editar conteúdo
 
-Todos os dados (perfil, stack, experiência, projectos, formação) estão em [`src/data.ts`](src/data.ts).
+O site está em português e inglês (selector PT/EN no menu).
+
+- Textos de cada língua (perfil, experiência, projectos, formação, menus): [`src/i18n/pt.ts`](src/i18n/pt.ts) e [`src/i18n/en.ts`](src/i18n/en.ts). Ao alterar um, altere também o outro.
+- Contactos, links e stack (ícones): [`src/data.ts`](src/data.ts).
+- Cores dos temas claro e escuro: início de [`src/index.css`](src/index.css).
+
 Os ícones vêm do [`react-icons`](https://react-icons.github.io/react-icons/).
 
 ## Publicar (Vercel)

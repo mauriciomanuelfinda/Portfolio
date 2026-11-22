@@ -4,14 +4,17 @@ import {
 } from 'react-icons/tb'
 import Reveal from './Reveal'
 import { profile } from '../data'
+import { useI18n } from '../i18n'
 
 const links = [
   { label: 'WhatsApp', value: profile.phone, href: profile.whatsapp, icon: TbBrandWhatsapp },
-  { label: 'LinkedIn', value: 'maurício-finda', href: profile.linkedin, icon: TbBrandLinkedin },
-  { label: 'GitHub', value: '@mauriciomanuelfinda', href: profile.github, icon: TbBrandGithub },
+  { label: 'LinkedIn', value: profile.linkedinHandle, href: profile.linkedin, icon: TbBrandLinkedin },
+  { label: 'GitHub', value: profile.githubHandle, href: profile.github, icon: TbBrandGithub },
 ]
 
 export default function Contact() {
+  const { t } = useI18n()
+  const c = t.contact
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
@@ -28,14 +31,16 @@ export default function Contact() {
     <section id="contacto" className="section">
       <div className="container">
         <Reveal className="contact">
-          <div className="contact__bg" aria-hidden="true" />
-          <span className="kicker">06 — Contacto</span>
+          <span className="kicker">
+            <span className="kicker__num">06</span>
+            {c.kicker}
+          </span>
           <h2>
-            Tem um projecto em mente?
+            {c.title}
             <br />
-            <span className="gradient-text">Vamos construí-lo juntos.</span>
+            <span className="accent">{c.titleAccent}</span>
           </h2>
-          <p className="muted">Envie uma mensagem — e-mail, WhatsApp ou LinkedIn.</p>
+          <p className="muted">{c.text}</p>
 
           <div className="contact__email">
             <a href={`mailto:${profile.email}`} className="btn btn--primary btn--lg">
@@ -43,14 +48,14 @@ export default function Contact() {
             </a>
             <button
               type="button"
-              className={`btn btn--ghost btn--icon ${copied ? 'is-copied' : ''}`}
+              className={`icon-btn icon-btn--lg ${copied ? 'is-copied' : ''}`}
               onClick={copy}
-              aria-label="Copiar e-mail"
-              title="Copiar e-mail"
+              aria-label={c.copy}
+              title={c.copy}
             >
               {copied ? <TbCheck /> : <TbCopy />}
             </button>
-            <span className="sr-only" aria-live="polite">{copied ? 'E-mail copiado' : ''}</span>
+            <span className="sr-only" aria-live="polite">{copied ? c.copied : ''}</span>
           </div>
 
           <div className="contact__links">
